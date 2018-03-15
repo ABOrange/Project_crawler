@@ -53,12 +53,11 @@ for url in Depturl:
             fo.write("\n")
             count4 = 0
             for a in Info:
-                    a = a.replace('\n','')
-                    a = a.replace('】','】\n')
+                    a = a.replace('\n',' ')    #去掉隱藏換行符號
+                    #a = a.replace('】','\n')    #偵測字尾進行換行 但卡到錄取別的"】"
                     fo.write(a)
-                    count4+=1
+                    count4 += 1
                     if (count4 % 4 == 0):
-                        count4=0
-                        fo.write("\n")
+                        count4 = 0
                     else: 
                         fo.write(",")
