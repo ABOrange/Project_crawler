@@ -43,7 +43,7 @@ for url in Depturl:
     for i in info:
             Info.append(i.text)
     deptname = soup.find("h2","mainTtl")
-    print ('dept:'+deptname.text)
+    print (deptname.text)
     if not os.path.exists(Title):
         os.makedirs(Title)
     filename2 = Title  + "/" + deptname.text + ".csv"
@@ -51,14 +51,27 @@ for url in Depturl:
             fo.write(u'\ufeff')
             fo.write("准考証號,姓名,錄取別,錄取學校")
             fo.write("\n")
-            count4 = 0
+            count = 0
+            adm_no = '111'    #儲存准考證號
+            name = '222'            #儲存姓名
+            qual_order = '333'  #儲存錄取別
             for a in Info:
                     a = a.replace('\n','')    #去掉隱藏換行符號
-                    if (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')) : #偵測自首字尾進行換行
-                        a = a.replace('】','】\n,,,')    #三逗點留空
-                    fo.write(a)
-                    count4 += 1
+                    if (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')) and count ==: #偵測字首字尾進行換行
+                        a = a.replace('】','】\n' + adm_no + ',' + name + ',' + qual_order + ',')    #在下一行插入准考證/姓名/錄取別
+                        fo.write(a)
+                    elif (count == 3):
+                        fo.write('\n')
+                        fo.write(a)
+                        count = 0
+                    else :
+                        fo.write(a)
+                        fo.write(',')
+                        count += 1
+                        
+                    
+                    """count4 += 1
                     if (count4 % 4 == 0):
                         count4 = 0
                     else: 
-                        fo.write(",")
+                        fo.write(",")"""
