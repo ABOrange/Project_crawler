@@ -57,12 +57,11 @@ for url in Depturl:
             qual_order = '333'  #儲存錄取別
             for a in Info:
                     a = a.replace('\n','')    #去掉隱藏換行符號
-                    if (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')) and count ==: #偵測字首字尾進行換行
+                    if (((a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】'))) and (count != 3)): #偵測字首字尾進行換行
                         a = a.replace('】','】\n' + adm_no + ',' + name + ',' + qual_order + ',')    #在下一行插入准考證/姓名/錄取別
                         fo.write(a)
-                    elif (count == 3):
-                        fo.write('\n')
-                        fo.write(a)
+                    elif (count == 3):    #第三個逗點後為中正大學
+                        fo.write('國立中正大學')
                         count = 0
                     else :
                         fo.write(a)
