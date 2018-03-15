@@ -63,6 +63,7 @@ for url in Depturl:
                         fo.write(a)
                         fo.write(",")
                         adm_no = a
+                        count = 0
                     elif (len(a) >= 2 and len(a) <= 5): #姓名
                         fo.write(a)
                         fo.write(",")
@@ -74,5 +75,4 @@ for url in Depturl:
                     elif (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')): #偵測字首字尾進行換行
                         a = a.replace('】','】\n' + adm_no + ',' + name + ',' + qual_order + ',')    #在下一行插入准考證/姓名/錄取別
                         fo.write(a)
-                        
-            
+                        fo.write('國立中正大學')
