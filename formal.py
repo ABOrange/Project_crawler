@@ -54,7 +54,8 @@ for url in Depturl:
             count4 = 0
             for a in Info:
                     a = a.replace('\n','')    #去掉隱藏換行符號
-                    #a = a.replace('】','】\n')    #偵測字尾進行換行 但卡到錄取別的"】"
+                    if (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')) : #偵測自首字尾進行換行
+                        a = a.replace('】','】\n,,,')    #三逗點留空
                     fo.write(a)
                     count4 += 1
                     if (count4 % 4 == 0):
