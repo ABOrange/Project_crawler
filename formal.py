@@ -52,25 +52,27 @@ for url in Depturl:
             fo.write("准考証號,姓名,錄取別,錄取學校")
             fo.write("\n")
             count = 0
+            cunt2 = 0
             adm_no = '111'    #儲存准考證號
             name = '222'            #儲存姓名
             qual_order = '333'  #儲存錄取別
             for a in Info:
                     a = a.replace('\n','')    #去掉隱藏換行符號
-                    if (((a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】'))) and (count != 3)): #偵測字首字尾進行換行
+                    if (len(a) == 9):
+                        fo.write("\n")
+                        fo.write(a)
+                        fo.write(",")
+                        adm_no = a
+                    elif (len(a) >= 2 and len(a) <= 5): #姓名
+                        fo.write(a)
+                        fo.write(",")
+                        name = a
+                    elif a.startswith('正') or a.startswith('備'): #錄取別
+                        fo.write(a)
+                        fo.write(",")
+                        qual_order = a
+                    elif (a.startswith('國立') and a.endswith('】')) or (a.startswith('私立') and a.endswith('】')): #偵測字首字尾進行換行
                         a = a.replace('】','】\n' + adm_no + ',' + name + ',' + qual_order + ',')    #在下一行插入准考證/姓名/錄取別
                         fo.write(a)
-                    elif (count == 3):    #第三個逗點後為中正大學
-                        fo.write('國立中正大學')
-                        count = 0
-                    else :
-                        fo.write(a)
-                        fo.write(',')
-                        count += 1
                         
-                    
-                    """count4 += 1
-                    if (count4 % 4 == 0):
-                        count4 = 0
-                    else: 
-                        fo.write(",")"""
+            
