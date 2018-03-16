@@ -72,12 +72,11 @@ for url in Depturl:
                         name = a
 
                     elif a.startswith('正') or a.startswith('備'): #錄取別
-                    """
-                        b = 下一個a切割後
-                        fo.write(b)
-                        fo.write(",")
-                        qual_order = b
-                    """
+                        #b = 下一個a切割後
+                        #fo.write(b)
+                        #fo.write(",")
+                        #qual_order = b
+                        
                         fo.write(a)
                         fo.write(",")
                         qual_order = a
@@ -86,3 +85,5 @@ for url in Depturl:
                         a = a.replace('】','】\n' + adm_no + ',' + name + ',' + qual_order + ',')    #在下一行插入准考證/姓名/錄取別
                         fo.write(a)
                         fo.write('國立中正大學')
+                        
+            fo.write(str(count))
