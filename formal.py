@@ -11,15 +11,6 @@ def find_between( s, first, last ):
         return s[start:end]
     except ValueError:
         return ""
-
-def find_between_r( s, first, last ):
-    try:
-        start = s.rindex( first ) + len( first )
-        end = s.rindex( last, start )
-        return s[start:end]
-    except ValueError:
-        return ""
-#--提取字串中間值函數--#
         
 url = "https://www.tkbgo.com.tw/mutualChabang/toSchoolDep.jsp?state=1&school_no=S1010"
 
