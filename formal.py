@@ -19,7 +19,7 @@ def find_between_r( s, first, last ):
         return s[start:end]
     except ValueError:
         return ""
-#--切割並提取字串中間值函數--#
+#--提取字串中間值函數--#
         
 url = "https://www.tkbgo.com.tw/mutualChabang/toSchoolDep.jsp?state=1&school_no=S1010"
 
@@ -103,4 +103,4 @@ for url in Depturl:
                         dept = find_between( temp[a], "--", "y" )    #提取字串後儲存系所
                         qual_order = find_between( temp[a], "【", "】" )    #提取字串後儲存錄取別
                     
-                        fo.write(adm_no + "," + name + "," + qual_order + "," + school + "," + dept + "\n")    #每位第二行開始寫入(2nd to last row)
+                        fo.write(adm_no + "," + name + "," + qual_order + "," + school + "," + dept + "\n")    #每位第二行開始寫入 #(2nd to last row)
