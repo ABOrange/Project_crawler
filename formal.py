@@ -12,7 +12,9 @@ def find_between( s, first, last ):
     except ValueError:
         return ""
         
-url = "https://www.tkbgo.com.tw/mutualChabang/toSchoolDep.jsp?state=1&school_no=S1010"
+dataType = input("輸入代碼後按Enter 0.一般生 1.甄試：")
+
+url = "https://www.tkbgo.com.tw/mutualChabang/toSchoolDep.jsp?state=" + dataType + "&school_no=S1010"
 
 res = requests.get(url)
 
