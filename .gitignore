@@ -3,5 +3,5 @@
 國立中正大學研究所升學交叉查榜aa依學校查詢(甄試生) - 2018年/DeptInfo.csv
 國立中正大學研究所升學交叉查榜依學校查詢(甄試生) - 2018年/DeptInfo.csv
 *.csv
-.gitattributes
-.gitignore
+*.gitattributes
+*.gitignore
