@@ -65,7 +65,8 @@ for url in Depturl:
     filename2 = Title  + "/" + deptname.text + ".csv"
     with codecs.open(filename2, 'a',encoding='utf8') as fo:
             fo.write(u'\ufeff')
-            fo.write("准考証號,姓名,錄取別,錄取學校,錄取學系")
+            fo.write("准考證號,姓名,錄取別,錄取學校,錄取學系")
+            fo.write("\n")
             adm_no = '111'    #儲存准考證號
             name = '222'            #儲存姓名
             qual_order = '333'    #儲存錄取別
@@ -76,7 +77,6 @@ for url in Depturl:
                 Info[i] = Info[i].replace('\xa0','y')    #替換空白字元
 
                 if (len(Info[i]) == 9):    #辨識准考證 #(1st row)
-                    fo.write("\n")
                     fo.write(Info[i])
                     fo.write(",")
                     adm_no = Info[i]
