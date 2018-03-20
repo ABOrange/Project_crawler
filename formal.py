@@ -79,19 +79,22 @@ for url in Depturl:
                     fo.write(",")
                     name = Info[i]
                     
-                elif Info[i].startswith('正') or Info[i].startswith('備'): #辨識每位第一個錄取別欄位 #(1st row)
-                    fo.write(Info[i] + ",")
+                elif Info[i].startswith('正取') or Info[i].startswith('備取'): #辨識每位第一個錄取別欄位 #(1st row)
+                    tmp = Info[i].split("【")    #去除"【複試】"
+                    fo.write(tmp[0] + ",")
                     fo.write(SchName.text + ",")    #所在頁面之學校
                     fo.write(deptname.text + "\n")    #所在頁面之系所
 
-                elif ((Info[i].startswith('x國') and Info[i].endswith('x')) or (Info[i].startswith('x私立') and Info[i].endswith('x'))): #偵測字首
+                elif ((Info[i].startswith('x國') and Info[i].endswith('x')) or (Info[i].startswith('x私') and Info[i].endswith('x'))): #偵測字首
                     temp = Info[i].split("x")    #以x切割並暫存split後的array -> ['', '國立成功大學--工程科學系甲組甄試(一般生)yy複試【備取26】', '']
                     for a in range(0,len(temp)) :    #走訪temp每個array
                         if temp[a].startswith("國"):
                             school = ("國" + find_between( temp[a], "國", "-" ))    #提取字串後儲存國立學校
                         elif temp[a].startswith("私"):
                             school = ("私" + find_between( temp[a], "私", "-" ))    #提取字串後儲存私立學校
-                        else :
+                        else :    #若學校的開頭不是"國" or "私"
+                            otherSchool = temp[a].split("學")
+                            school = otherSchool[0] + "學"
                             continue;
                         dept = find_between( temp[a], "--", "y" )    #提取字串後儲存系所
                         qual_order = find_between( temp[a], "【", "】" )    #提取字串後儲存錄取別
