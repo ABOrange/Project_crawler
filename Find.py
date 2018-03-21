@@ -31,5 +31,6 @@ for a in range(0,len(temp)) :
 		
 	print (find_between( temp[a], "--", " " ))
 	print (find_between( temp[a], "【", "】" ))
+	print(find_between( temp[a], "(", ")" ))
 	
 	
