@@ -94,9 +94,9 @@ for url in Depturl:
                             identity = "一般生"
                         elif (z.find("在職專班") != -1):
                             identity = "在職專班"
-                        elif (temp[a].find("在職生") != -1):
+                        elif (z.find("在職生") != -1):
                             identity = "在職生"
-                        elif (temp[a].find("EMBA") != -1):
+                        elif (z.find("EMBA") != -1):
                             identity = "EMBA"
                             
                         fo.write(identity + "\n")
